@@ -26,6 +26,8 @@ $(function(){
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
+	window.totalDownloads = 0;
+
 	var getSome;
 
 	getSome = {
@@ -51,18 +53,21 @@ $(function(){
 						'</div>');
 					}
 					if (console.log) { console.log('_len', _len); }
-					impress().init();
+					window.totalDownloads++;
+					if (window.totalDownloads > 5) {
+						window.clearTimeout(nextCall);
+						impress().init();
+						var nextImage = window.setInterval(function(){
+							impress().next();
+						}, 3000);
+					}
 				}
 			});
 		}
 	};
 
 	var nextCall = window.setInterval(function(){
-		getSome.instagram('halloween', 3500);
-	}, 6000);
-
-	var nextImage = window.setInterval(function(){
-		impress().next();
-	}, 2000);
+		getSome.instagram('halloween');
+	}, 2500);
 
 });
