@@ -21,6 +21,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    background:#000 url(../img/InstagramBackground.png) center top no-repeat;
 }
 
 /*
@@ -95,9 +96,6 @@ textarea {
 
 
 
-
-
-
 #impress .step {
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
@@ -108,10 +106,24 @@ textarea {
 }
 
 #impress .active {
-    opacity: 1
+    opacity: 1;
 }
 
+#impress .caption img {
+    margin-right:10px;
+    border:1px solid #000;
+}
 
+#impress .caption {
+    font-family: 'Nosifer', cursive;
+    color:#fff;
+}
+#impress .caption strong {
+    color:#FF5721;
+}
+.caption {
+    margin:15px 0;
+}
 
 
 
