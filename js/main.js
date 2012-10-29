@@ -4,7 +4,7 @@ $(function(){
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	window.totalDownloads = 0;
+	window.totalDownloads = 1;
 
 	var getSome;
 
@@ -19,33 +19,44 @@ $(function(){
 				success: function(instagram){
 					var _i, _len, img, cap, user_name, user_pic;
 					_i = 0;
-					_len = instagram.data.length;
+					getSome.totalSteps = _len = instagram.data.length;
+					//if (console.log) { alert('_len', _len); }
 					for (_i; _i < _len; _i++) {
 						img = instagram.data[_i].images.standard_resolution.url;
 						cap = instagram.data[_i].caption.text;
 						user_name = instagram.data[_i].caption.from.username;
 						user_pic = instagram.data[_i].caption.from.profile_picture;
-						$('#impress').append('<div class="slide step" data-x="' + _i * 0 + '" data-y="' + _i * 0 +  '" data-z="-' + 1250 * _i + '">' +
+						$('#impress').append('<div class="slide step"' +
+								'data-rotate-x="-' + (_i * 100) +
+								'" data-rotate-y="' + (_i * 400) +
+								'" data-x="' + (_i * 500) +
+								'" data-y="' + (_i * 1000) * getRandomInt(-1, 1) +
+								'" data-z="-' + getRandomInt(_i, 1245) +
+								'" data-rotate=' + getRandomInt(_i, 45) + '>' +
 								'<img src="' + img + '" alt="">' +
-								'<div class="caption"><img src="' + user_pic + '" align="left">' + '<strong>' + user_name + '</strong> - ' + cap + '</div>' +
+								'<div class="caption"><img src="' + user_pic + '">' +
+								'<strong>' + user_name + '</strong> - ' + cap + '</div>' +
 						'</div>');
 					}
-					if (console.log) { console.log('_len', _len); }
-					window.totalDownloads++;
-					if (window.totalDownloads > 5) {
-						window.clearTimeout(nextCall);
-						impress().init();
-						var nextImage = window.setInterval(function(){
-							impress().next();
-						}, 3000);
-					}
+					impress().init();
+					window.nextImage = window.setInterval(function(){
+						getSome.next();
+					}, 8000);
 				}
 			});
+		},
+		next: function(){
+			// if (console.log) { console.log("getSome.totalSteps === $('.step.active').index()", getSome.totalSteps , $('.step.active').index()); }
+			if (getSome.totalSteps === ($('.step.active').index() + 2) || getSome.totalSteps === 0) {
+				window.clearTimeout(window.nextImage);
+				// window.location.assign('http://hashtag.dev/');
+				window.location = '/';
+				return;
+			}
+			impress().next();
 		}
 	};
 
-	var nextCall = window.setInterval(function(){
-		getSome.instagram('halloween');
-	}, 2500);
+	getSome.instagram('593boo');
 
 });
