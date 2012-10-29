@@ -47,7 +47,7 @@ $(function(){
 		},
 		next: function(){
 			// if (console.log) { console.log("getSome.totalSteps === $('.step.active').index()", getSome.totalSteps , $('.step.active').index()); }
-			if (getSome.totalSteps === ($('.step.active').index() + 2) || getSome.totalSteps === 0) {
+			if (getSome.totalSteps === ($('.step.active').index() + 1) || getSome.totalSteps === 0) {
 				window.clearTimeout(window.nextImage);
 				// window.location.assign('http://hashtag.dev/');
 				window.location = '/';
