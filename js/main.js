@@ -27,15 +27,15 @@ $(function(){
 						user_name = instagram.data[_i].caption.from.username;
 						user_pic = instagram.data[_i].caption.from.profile_picture;
 						$('#impress').append('<div class="slide step"' +
-								'data-rotate-x="-' + (_i * 100) +
-								'" data-rotate-y="' + (_i * 400) +
-								'" data-x="' + (_i * 500) +
-								'" data-y="' + (_i * 1000) * getRandomInt(-1, 1) +
-								'" data-z="-' + getRandomInt(_i, 1245) +
-								'" data-rotate=' + getRandomInt(_i, 45) + '>' +
-								'<img src="' + img + '" alt="">' +
-								'<div class="caption"><img src="' + user_pic + '">' +
-								'<strong>' + user_name + '</strong> - ' + cap + '</div>' +
+							'data-rotate-x="-' + (_i * 100) +
+							'" data-rotate-y="' + (_i * 400) +
+							'" data-x="' + (_i * 500) +
+							'" data-y="' + (_i * 1000) * getRandomInt(-1, 1) +
+							'" data-z="-' + getRandomInt(_i, 1245) +
+							'" data-rotate=' + getRandomInt(_i, 45) + '>' +
+							'<img src="' + img + '" alt="">' +
+							'<div class="caption"><img src="' + user_pic + '">' +
+							'<strong>' + user_name + '</strong> - ' + cap + '</div>' +
 						'</div>');
 					}
 					impress().init();
